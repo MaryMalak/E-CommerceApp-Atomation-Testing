@@ -10,36 +10,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ResetPassStepDefinition {
-    WebDriver driver;
-    FirstPage firstPage;
-    LoginPage login;
-    PasswordRecoveryPage passwordRecovery;
-    @Before("@ResetPass")
-    public void user_open_App() throws InterruptedException {
-        //bridge between test script and browsers
-        String driverPath =System.getProperty("user.dir")+"\\src\\main\\resources\\browsers\\chromedriver.exe";
-        System.setProperty("webdriver.chrome.driver",driverPath);
-        //create new object
-        driver=new ChromeDriver();
-        login=new LoginPage(driver);
-        passwordRecovery=new PasswordRecoveryPage(driver);
-        firstPage =new FirstPage(driver);
-        // maximize window
-        driver.manage().window().maximize();
-
-        //navigate to App
-        driver.navigate().to("https://demo.nopcommerce.com/login?returnUrl=%2F");
-        Thread.sleep(2000);
-    }
+    FirstPage firstPage=new FirstPage();
+    LoginPage login=new LoginPage();
+    PasswordRecoveryPage passwordRecovery=new PasswordRecoveryPage();
 
     @Given("user go to login page")
-    public void goToLoginpage() throws InterruptedException {
+    public void goToLoginpage()  {
         firstPage.loginElement().click(); ;
-        Thread.sleep(2000);
+
     }
     @When("user click on \"forgot password\"")
     public void forgotPass(){
@@ -60,8 +40,4 @@ public class ResetPassStepDefinition {
         Assert.assertEquals(expectedResult,actualResult);
     }
 
-    @After("@ResetPass")
-    public void closeBrowser(){
-        driver.quit();
-    }
 }

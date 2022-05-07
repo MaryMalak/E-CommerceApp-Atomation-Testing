@@ -10,40 +10,17 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 
 public  class RegisterStepDefinition {
-    WebDriver driver;
-    LoginPage login;
-    RegisterPage register;
-    FirstPage firstPage;
+    LoginPage login=new LoginPage();
+    RegisterPage register=new RegisterPage() ;
+    FirstPage firstPage=new FirstPage();
 
-
-    @Before("@register")
-    public void user_open_App() throws InterruptedException {
-    //bridge between test script and browsers
-    String driverPath =System.getProperty("user.dir")+"\\src\\main\\resources\\browsers\\chromedriver.exe";
-    System.setProperty("webdriver.chrome.driver",driverPath);
-
-    //create new object
-    driver=new ChromeDriver();
-    register=new RegisterPage(driver);
-    firstPage =new FirstPage(driver);
-    login=new LoginPage(driver);
-    // maximize window
-    driver.manage().window().maximize();
-
-    //navigate to App
-    driver.navigate().to("https://demo.nopcommerce.com/login?returnUrl=%2F");
-    Thread.sleep(2000);
-}
-
-@Given("user open Register page")
-    public void navigateToRegisterPage() throws InterruptedException {
+    @Given("user open Register page")
+    public void navigateToRegisterPage() {
 
         firstPage.RegisterElement().click();
-        Thread.sleep(2000);
     }
     @When("^user choose gender \"(.*)\"$")
     public void chooseGender (String gender){
@@ -68,8 +45,7 @@ public  class RegisterStepDefinition {
         register.confirmPassElement().sendKeys(pass);
     }
     @And("user click on Register button")
-    public void clickOnRegBtn() throws InterruptedException {
-        Thread.sleep(3000);
+    public void clickOnRegBtn()  {
         register.registerBtn().click();
     }
 
@@ -80,8 +56,4 @@ public  class RegisterStepDefinition {
         Assert.assertTrue(actualResult.contains(expectedResult));
     }
 
-    @After("@register")
-    public void closeBrowser(){
-        driver.quit();
-    }
 }

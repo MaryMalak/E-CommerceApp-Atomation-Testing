@@ -1,5 +1,6 @@
 package Pages;
 
+import StepDefinitions.Hooks;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,8 +8,8 @@ import org.openqa.selenium.WebElement;
 public class RegisterPage  {
     WebDriver driver;
 
-    public RegisterPage(WebDriver driver) {
-        this.driver = driver;
+    public RegisterPage() {
+        this.driver = Hooks.driver;
     }
 
     public WebElement chooseGenderElement(String gender){
