@@ -3,6 +3,7 @@ package StepDefinitions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -11,10 +12,8 @@ public class Hooks {
 
     @Before
     public void user_open_App() throws InterruptedException {
-        //bridge between test script and browsers
-        String driverPath =System.getProperty("user.dir")+"\\src\\main\\resources\\browsers\\chromedriver.exe";
-        System.setProperty("webdriver.chrome.driver",driverPath);
-        //create new object
+
+        WebDriverManager.chromedriver().setup();
         driver=new ChromeDriver();
         // maximize window
         driver.manage().window().maximize();
