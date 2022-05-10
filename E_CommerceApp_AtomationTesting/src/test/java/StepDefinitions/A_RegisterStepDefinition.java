@@ -3,8 +3,6 @@ package StepDefinitions;
 import Pages.FirstPage;
 import Pages.LoginPage;
 import Pages.RegisterPage;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,7 +10,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 
-public  class RegisterStepDefinition {
+public  class A_RegisterStepDefinition {
     LoginPage login=new LoginPage();
     RegisterPage register=new RegisterPage() ;
     FirstPage firstPage=new FirstPage();

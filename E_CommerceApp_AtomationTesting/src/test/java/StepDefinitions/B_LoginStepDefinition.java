@@ -8,7 +8,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 
-public class LoginStepDefinition {
+public class B_LoginStepDefinition {
     LoginPage login = new LoginPage();
     FirstPage firstPage = new FirstPage();
     HomePage homePage = new HomePage();

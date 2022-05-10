@@ -7,6 +7,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class Hooks {
     public static WebDriver driver;
 
@@ -17,10 +19,12 @@ public class Hooks {
         driver=new ChromeDriver();
         // maximize window
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
 
         //navigate to App
-        driver.navigate().to("https://demo.nopcommerce.com/login?returnUrl=%2F");
-        Thread.sleep(2000);
+        driver.navigate().to("https://demo.nopcommerce.com/");
+        //driver.navigate().to("https://demo.nopcommerce.com/login?returnUrl=%2F");
+
     }
     @After
     public void closeBrowser(){

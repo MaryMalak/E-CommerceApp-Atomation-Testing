@@ -3,15 +3,13 @@ package StepDefinitions;
 import Pages.FirstPage;
 import Pages.LoginPage;
 import Pages.PasswordRecoveryPage;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class ResetPassStepDefinition {
+public class C_ResetPassStepDefinition {
     FirstPage firstPage=new FirstPage();
     LoginPage login=new LoginPage();
     PasswordRecoveryPage passwordRecovery=new PasswordRecoveryPage();
