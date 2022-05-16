@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class Hooks {
-    public static WebDriver driver;
+    public static WebDriver driver =null ;
 
     @Before
     public void user_open_App() throws InterruptedException {
@@ -23,7 +23,6 @@ public class Hooks {
 
         //navigate to App
         driver.navigate().to("https://demo.nopcommerce.com/");
-        //driver.navigate().to("https://demo.nopcommerce.com/login?returnUrl=%2F");
 
     }
     @After

@@ -62,7 +62,22 @@ public class HomePage {
     public WebElement product(String productName)  {
         return driver.findElement(By.cssSelector("img[title=\"Show details for "+productName));
     }
-    public WebElement sliderWrapper(){
-        return driver.findElement(By.id("nivo-slider"));
+    public WebElement sliderWrapper(Integer num){
+        return driver.findElements(By.cssSelector("a[href=\"http://demo.nopcommerce.com/\"]")).get(num);
     }
+    public  WebElement WishListBtn(){
+       return driver.findElements(By.cssSelector("button[class=\"button-2 add-to-wishlist-button\"]")).get(2);
+    }
+    public WebElement MessageInBarNotification(){
+        return driver.findElement(By.cssSelector("p[class=\"content\"]"));
+    }
+    public WebElement AddToCartBtn(){
+        return driver.findElements(By.cssSelector("button[class=\"button-2 product-box-add-to-cart-button\"]")).get(2);
+    }
+    public  Integer SizeOfItemGrid(){
+        return driver.findElements(By.className("item-grid")).size();
+    }
+
+
+
 }

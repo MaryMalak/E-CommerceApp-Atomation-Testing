@@ -6,11 +6,11 @@ import Pages.HomePage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-
+import org.assertj.core.api.SoftAssertions;
 
 public class D_SearchProductStepDefinition {
     HomePage homePage=new HomePage();
-
+    SoftAssertions  softAssertions = new SoftAssertions();
 
 
 
@@ -24,7 +24,9 @@ public class D_SearchProductStepDefinition {
     public void searchForProductByNameSuccessfully(String product) {
         String expectedResult="/search?q="+product;
         String acualResult=Hooks.driver.getCurrentUrl();
-        Assert.assertTrue(acualResult.contains(expectedResult));
+        softAssertions.assertThat(acualResult).contains(expectedResult);
+        softAssertions.assertThat(homePage.SizeOfItemGrid()).isGreaterThan(0);
+        softAssertions.assertAll();
     }
 
     @When("user enter any Sku\\({string}) and click search")
@@ -37,6 +39,8 @@ public class D_SearchProductStepDefinition {
     public void searchForProductBySKUSuccessfully(String SKU) {
         String expectedResult="/search?q="+SKU;
         String acualResult=Hooks.driver.getCurrentUrl();
-        Assert.assertTrue(acualResult.contains(expectedResult));
+        softAssertions.assertThat(acualResult).contains(expectedResult);
+        softAssertions.assertThat(homePage.SizeOfItemGrid()).isGreaterThan(0);
+        softAssertions.assertAll();
     }
 }

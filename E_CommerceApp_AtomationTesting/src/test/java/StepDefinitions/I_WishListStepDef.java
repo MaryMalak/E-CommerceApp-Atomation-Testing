@@ -1,29 +1,24 @@
 package StepDefinitions;
 
 import Pages.HomePage;
-import Pages.ProductDetailsPage;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 public class I_WishListStepDef {
-    ProductDetailsPage PDP=new ProductDetailsPage();
     HomePage homePage=new HomePage();
 
 
-    @When("Guest user click on any product {string} and click on wishlist btn")
-    public void AddProductToWishlist(String productName) throws InterruptedException {
-        homePage.product(productName).click();
-        PDP.WishListBtn().click();
-        Thread.sleep(3000);
+    @When("user add a product to wishlist")
+    public void AddProductToWishlist()  {
+        homePage.WishListBtn().click();
 
     }
 
-    @Then("user find message for wishlist {string} is displayed in bar notification")
-    public void MessageForWishListIsDisplayed(String msg) {
-        String expectedResult=msg;
-        String actualResult=PDP.MessageInBarNotification().getText();
+    @Then("wishlist message is displayed in notification bar")
+    public void MessageForWishListIsDisplayed() {
+        String expectedResult="The product has been added to your wishlist";
+        String actualResult=homePage.MessageInBarNotification().getText();
         Assert.assertTrue(actualResult.contains(expectedResult));
     }
 

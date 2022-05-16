@@ -7,9 +7,18 @@
       And user click on login button
       Then user could login successfully
 
-    Scenario: Follow us' links open the corresponding website
+    Scenario: logged user open Facebook link
       When  user click on Facebook logo under follow us text
-      And user click on twitter logo under follow us text
-      And user click on RSS logo under follow us text
-      And user click on youtube logo under follow us text
-      Then 'Follow us' links open the corresponding website successfully
+      Then "https://www.facebook.com/nopCommerce" is opened in new tab
+
+    Scenario: logged user open twitter link
+      When  user click on twitter logo under follow us text
+      Then "https://twitter.com/nopCommerce" is opened in new tab
+
+    Scenario: logged user open RSS link
+      When  user click on RSS logo under follow us text
+      Then "https://twitter.com/nopCommerce/RSS" is opened in new tab
+
+    Scenario: logged user open youtube link
+      When  user click on youtube logo under follow us text
+      Then "https://www.youtube.com/user/nopCommerce" is opened in new tab
